@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <h1><%= @cocktail.name.capitalize %></h1>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Ingredients</th>
+            <td>TODO</td>
+          </tr>
+          <tr>
+            <th scope="row">Doses</th>
+            <td>TODO</td>
+            <td> </td>
+            <td></td>
+          </tr >
+          <%= simple_form_for [@cocktail, @dose] do |f| %>
+              <%= f.input :description %>
+              <%= f.association :ingredient, :collection => Ingredient.all %>
+              <%= f.input :cocktail_id, :as => :hidden, :input_html => { :value => @cocktail.id } %>
+              <%= f.button :submit %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
