@@ -20,6 +20,9 @@ ingredients["drinks"].each do |hash|
   ingredients_array << hash.values.first
 end
 
-10.times do
-  Ingredient.create!(name: ingredients_array.sample)
+20.times do
+  ingredient_to_save = ingredients_array.sample
+  if Ingredient.all.where(name: ingredient_to_save).empty?
+    Ingredient.create!(name: ingredient_to_save)
+  end
 end
